@@ -1,6 +1,8 @@
 <script setup lang="ts">
 // import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
+import "beercss";
+import "material-dynamic-colors";
 </script>
 
 <template>
@@ -9,7 +11,9 @@
 
     <div class="wrapper">
       <h1>Учётные записи</h1>
-      <button>+</button>
+      <button class="border square tertiary-border tertiary-text small medium-elevate">
+  <i>add</i>
+</button>
       <!-- <HelloWorld msg="You did it!" />
 
       <nav>
@@ -27,7 +31,10 @@ header {
   line-height: 1.5;
   max-height: 100vh;
 }
-
+.wrapper {
+  display: flex;
+  align-items: center;
+}
 .logo {
   display: block;
   margin: 0 auto 2rem;
