@@ -1,8 +1,21 @@
 <script setup lang="ts">
 // import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
-import "beercss";
-import "material-dynamic-colors";
+import 'beercss'
+import 'material-dynamic-colors'
+import VueNote from './components/VueNote.vue'
+
+import { ref } from 'vue'
+
+const notes = ref<string[]>([])
+const newNote = ref('')
+
+const addNewNote = () => {
+
+  console.log('click')
+
+  notes.value.push(newNote.value)
+  return notes
+}
 </script>
 
 <template>
@@ -11,84 +24,40 @@ import "material-dynamic-colors";
 
     <div class="wrapper">
       <h1>Учётные записи</h1>
-      <button class="border square tertiary-border tertiary-text small medium-elevate">
-  <i>add</i>
-</button>
-      <!-- <HelloWorld msg="You did it!" />
+      <button
+        @click="addNewNote"
+        class="border square tertiary-border tertiary-text small medium-elevate"
+      >
+        <i>add</i>
+      </button>
 
-      <nav>
+      <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav> -->
     </div>
   </header>
+  <main>
+    <VueNote v-for="(newNote, index) in notes" :key="index" newNote="note">{{}}</VueNote>
 
+    <!-- <TheCard v-for="card in dataCards" :number="card.number" :key="card.number"
+          >{{ card.text
+          }}<template #href><a :href="card.href" target="_blank">Ссылка</a></template></TheCard
+        > -->
+
+    <VueNote></VueNote>
+  </main>
   <!-- <RouterView /> -->
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  margin-top: 0;
 }
 .wrapper {
   display: flex;
   align-items: center;
-}
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  justify-content: center;
 }
 </style>
