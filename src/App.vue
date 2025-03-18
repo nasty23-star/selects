@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import 'beercss'
 import 'material-dynamic-colors'
-import VueNote from './components/VueNote.vue'
+import VNote from './components/VNote.vue'
 
 import { ref } from 'vue'
-import type { VNote } from './types/common'
-const notes = ref<VNote[]>([])
-const note = <VNote>{}
+import type { NoteInt } from './types/common'
+const notes = ref<NoteInt[]>([])
+const note = <NoteInt>{}
 
 const addNewNote = () => {
-  console.log('click')
-
   if (note && typeof note !== undefined && notes.value) {
-    notes.value.push(note)
-    return notes
+    notes.value.push({
+      id: Date.now(),
+      flag: '',
+      type: '',
+      login: '',
+      password: '',
+    })
   }
+}
+const updateNote = (newNote: NoteInt) => {
+  return notes.value.map((note) => {
+    if (note.id === newNote.id) {
+      note.type = newNote.type
+    }
+    return note
+  })
 }
 </script>
 
@@ -31,7 +42,7 @@ const addNewNote = () => {
     </div>
   </header>
   <main>
-    <VueNote v-for="note in notes" :key="note.login" note="note"></VueNote>
+    <VNote v-for="note in notes" :note="note" :key="note.id" @update-note="updateNote"></VNote>
   </main>
 </template>
 
