@@ -1,5 +1,5 @@
 export interface VNote {
-  id: number,
+  id: number
   flag?: string
   type: string
   login: string

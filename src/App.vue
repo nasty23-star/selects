@@ -1,27 +1,25 @@
 <script setup lang="ts">
-// import { RouterLink, RouterView } from 'vue-router'
 import 'beercss'
 import 'material-dynamic-colors'
 import VueNote from './components/VueNote.vue'
 
 import { ref } from 'vue'
-
-const notes = ref<string[]>([])
-const newNote = ref('')
+import type { VNote } from './types/common'
+const notes = ref<VNote[]>([])
+const note = <VNote>{}
 
 const addNewNote = () => {
-
   console.log('click')
 
-  notes.value.push(newNote.value)
-  return notes
+  if (note && typeof note !== undefined && notes.value) {
+    notes.value.push(note)
+    return notes
+  }
 }
 </script>
 
 <template>
   <header>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
-
     <div class="wrapper">
       <h1>Учётные записи</h1>
       <button
@@ -30,24 +28,11 @@ const addNewNote = () => {
       >
         <i>add</i>
       </button>
-
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
     </div>
   </header>
   <main>
-    <VueNote v-for="(newNote, index) in notes" :key="index" newNote="note">{{}}</VueNote>
-
-    <!-- <TheCard v-for="card in dataCards" :number="card.number" :key="card.number"
-          >{{ card.text
-          }}<template #href><a :href="card.href" target="_blank">Ссылка</a></template></TheCard
-        > -->
-
-    <VueNote></VueNote>
+    <VueNote v-for="note in notes" :key="note.login" note="note"></VueNote>
   </main>
-  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
