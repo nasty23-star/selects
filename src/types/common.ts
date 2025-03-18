@@ -1,4 +1,4 @@
-export interface VNote {
+export interface VNoteInt {
   id: number
   flag?: string
   type: string
