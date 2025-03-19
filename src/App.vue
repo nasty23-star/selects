@@ -23,6 +23,7 @@ const updateNote = (newNote: NoteInt) => {
   return notes.value.map((note) => {
     if (note.id === newNote.id) {
       note.type = newNote.type
+      note.flag = newNote.flag
     }
     return note
   })
