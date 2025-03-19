@@ -2,8 +2,9 @@
 import { ref, watch } from 'vue'
 import VSelect from './VSelect.vue'
 import VInput from './VInput.vue'
+import VButton from './VButton.vue'
 import type { NoteInt } from '../types/common'
-const emit = defineEmits(['updateNote'])
+const emit = defineEmits(['updateNote', 'deleteNote'])
 const props = defineProps<{ note: NoteInt }>()
 const selected = ref('')
 const flag = ref('')
@@ -40,6 +41,12 @@ watch(password, () => {
     <VInput v-model="login" />
     <VSelect v-model="selected" />
     <VInput v-model="password" />
+    <VButton
+      @click="emit('deleteNote', note.id)"
+      class="border square tertiary-border tertiary-text small medium-elevate"
+    >
+      <i>delete</i>
+    </VButton>
   </div>
 </template>
 
