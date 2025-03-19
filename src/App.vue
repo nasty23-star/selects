@@ -3,9 +3,7 @@ import 'beercss'
 import 'material-dynamic-colors'
 import VNote from './components/VNote.vue'
 import { useNotesStore } from './stores/notes'
-import { ref } from 'vue'
-import type { NoteInt } from './types/common'
-const notes = ref<NoteInt[]>([])
+
 
 const noteStore = useNotesStore()
 </script>
@@ -14,7 +12,6 @@ const noteStore = useNotesStore()
   <header>
     <div class="wrapper">
       <h1>Учётные записи</h1>
-      {{ notes }}
       <button @click="noteStore.addNewNote">
         <i>add</i>
       </button>
