@@ -24,6 +24,8 @@ const updateNote = (newNote: NoteInt) => {
     if (note.id === newNote.id) {
       note.type = newNote.type
       note.flag = newNote.flag
+      note.login = newNote.login
+      note.password = newNote.password
     }
     return note
   })
