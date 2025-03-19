@@ -1,18 +1,17 @@
 # selects
 
-This template should help get you started developing with Vue 3 in Vite.
+## Стек:
+1. Vue.js 3 + Composition Api
+2. Typescript
+3. Pinia
+4. Любой UI фреймворк
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Логика работы формы:
+<!-- 1. По нажатию кнопки "+" в конец учётных записей, добавляется новая пустая запись, состоящая из: Метки, Типа записи, Логина, Пароля.
+2. При нажатии кнопки удаления учётная запись должна полностью удалиться. -->
+3. По окончанию ввода значений в поля учётной записи происходит валидация обязательных полей. В случае валидности - учётная запись сохраняется / обновляется, в обратном - поля обозначаются красной обводкой.
+4. Все поля сохраняются в текстовом виде, кроме поля Метка. Оно должно преобразовываться в массив, где один элемент это страховое значение до :. В массиве должен лежать объект, где поле text равно одному элементу метки - {{ text: элемент метки }}.
+5. Сохранение учётной записи должно происходить в стейт менеджер. При обновлении страницы сохранённые записи должны отображаться.
 
 ## Project Setup
 
