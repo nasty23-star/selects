@@ -30,22 +30,28 @@ const updateNote = (newNote: NoteInt) => {
     return note
   })
 }
+const deleteNote = (id: number) => {
+  return (notes.value = notes.value.filter((note) => note.id !== id))
+}
 </script>
 
 <template>
   <header>
     <div class="wrapper">
       <h1>Учётные записи</h1>
-      <button
-        @click="addNewNote"
-        class="border square tertiary-border tertiary-text small medium-elevate"
-      >
+      <button @click="addNewNote">
         <i>add</i>
       </button>
     </div>
   </header>
   <main>
-    <VNote v-for="note in notes" :note="note" :key="note.id" @update-note="updateNote"></VNote>
+    <VNote
+      v-for="note in notes"
+      :note="note"
+      :key="note.id"
+      @update-note="updateNote"
+      @delete-note="deleteNote"
+    ></VNote>
   </main>
 </template>
 
