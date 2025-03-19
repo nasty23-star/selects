@@ -36,10 +36,7 @@ const updateNote = (newNote: NoteInt) => {
   <header>
     <div class="wrapper">
       <h1>Учётные записи</h1>
-      <button
-        @click="addNewNote"
-        class="border square tertiary-border tertiary-text small medium-elevate"
-      >
+      <button @click="addNewNote">
         <i>add</i>
       </button>
     </div>
