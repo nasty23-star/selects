@@ -2,10 +2,29 @@
 import 'beercss'
 import 'material-dynamic-colors'
 import VNote from './components/VNote.vue'
+import { onMounted } from 'vue'
 import { useNotesStore } from './stores/notes'
 
-
 const noteStore = useNotesStore()
+// const notes = noteStore.notes
+onMounted(() => {
+  const storedNotes = localStorage.getItem('notes')
+  if (storedNotes !== null) {
+    try {
+      const parsedNotes = JSON.parse(storedNotes)
+      // Ensure parsedNotes is an array of objects with the correct type
+      if (Array.isArray(parsedNotes)) {
+        parsedNotes.forEach((note) => {
+          if ('id' in note && 'type' in note && 'login' in note && 'password' in note) {
+            noteStore.notes.push(note)
+          }
+        })
+      }
+    } catch (error) {
+      console.error('Error parsing notes:', error)
+    }
+  }
+})
 </script>
 
 <template>

@@ -6,10 +6,10 @@ import VButton from './VButton.vue'
 import type { NoteInt } from '../types/common'
 const emit = defineEmits(['updateNote', 'deleteNote'])
 const props = defineProps<{ note: NoteInt }>()
-const selected = ref('')
-const flag = ref('')
-const login = ref('')
-const password = ref('')
+const selected = ref(props.note.type)
+const flag = ref(props.note.flag)
+const login = ref(props.note.login)
+const password = ref(props.note.password)
 watch(selected, () => {
   emit('updateNote', {
     ...props.note,
