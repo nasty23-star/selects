@@ -40,14 +40,22 @@ watch(password, () => {
     <VInput v-model="flag" />
     <VInput v-model="login" />
     <VSelect v-model="selected" />
-    <VInput v-model="password" />
+    <VInput v-model="password" type="password" />
     <VButton
       @click="emit('deleteNote', note.id)"
-      class="border square tertiary-border tertiary-text small medium-elevate"
+      class="border square tertiary-bordermedium large tertiary-text medium-elevate top"
     >
       <i>delete</i>
     </VButton>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+</style>
