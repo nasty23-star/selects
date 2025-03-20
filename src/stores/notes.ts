@@ -4,6 +4,7 @@ import type { NoteInt } from '../types/common'
 
 export const useNotesStore = defineStore('notes', () => {
   const notes = ref<NoteInt[]>([])
+  const saveNotes = () => localStorage.setItem('notes', JSON.stringify(notes.value))
   const addNewNote = () => {
     notes.value.push({
       id: Date.now(),
@@ -20,9 +21,11 @@ export const useNotesStore = defineStore('notes', () => {
       }
       return note
     })
+    saveNotes()
   }
   const deleteNote = (id: number) => {
     notes.value = notes.value.filter((note) => note.id !== id)
+    saveNotes()
   }
   return {
     notes,
