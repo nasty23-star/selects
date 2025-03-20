@@ -1,6 +1,6 @@
 export interface NoteInt {
   id: number
-  flag?: string
+  flag?: string[]
   type: string
   login: string
   password: string
