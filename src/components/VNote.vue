@@ -72,5 +72,6 @@ watch(password, () => {
   align-items: flex-start;
   margin-left: 40px;
   gap: 20px;
+  margin-bottom: 20px;
 }
 </style>

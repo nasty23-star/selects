@@ -27,4 +27,7 @@ const options = ref(['Локальная', 'LDAP'])
 .select {
   width: 214px;
 }
+.field {
+  margin: 0;
+}
 </style>

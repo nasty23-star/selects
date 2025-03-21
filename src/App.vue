@@ -65,6 +65,8 @@ header {
   margin-left: 40px;
   display: flex;
   gap: 20px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 .title {
   width: 214px;
