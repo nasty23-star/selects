@@ -51,7 +51,6 @@ watch(password, () => {
 </script>
 <template>
   <div class="container">
-    {{ flag }}
     <VInput v-model="flag" type="flag" />
 
     <VInput v-model="login" />
