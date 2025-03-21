@@ -7,7 +7,6 @@ const emit = defineEmits<{
 <template>
   <div :class="props.type !== 'password' ? 'field border input' : 'field sufix border input'">
     <input
-      :maxlength="props.type === 'flag' ? '50' : '100'"
       :value="props.modelValue" :type="props.type"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />

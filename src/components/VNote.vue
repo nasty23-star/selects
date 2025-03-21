@@ -14,6 +14,7 @@ watch(selected, () => {
   emit('updateNote', {
     ...props.note,
     type: selected.value,
+    password: selected.value === "LDAP" ? null : password.value,
   })
 })
 watch(flag, () => {
@@ -37,13 +38,13 @@ watch(password, () => {
 </script>
 <template>
   <div class="container">
-    <VInput v-model="flag" />
+    <VInput v-model="flag" type="flag" />
     <VInput v-model="login" />
     <VSelect v-model="selected" />
-    <VInput v-model="password" type="password" />
+    <VInput v-if='props.note.password !== null' v-model="password" type="password" />
     <VButton
       @click="emit('deleteNote', note.id)"
-      class="border square tertiary-bordermedium large tertiary-text medium-elevate top"
+      class="border square tertiary-border medium large tertiary-text medium-elevate top"
     >
       <i>delete</i>
     </VButton>

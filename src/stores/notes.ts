@@ -11,7 +11,7 @@ export const useNotesStore = defineStore('notes', () => {
       type: '',
       login: '',
       password: '',
-      flag: '',
+      flag: [],
     })
   }
   const updateNote = (newNote: NoteInt) => {
