@@ -24,6 +24,7 @@ onMounted(() => {
     }
   }
 })
+const titles = ['Метки', 'Тип записи', 'Логин', 'Пароль']
 </script>
 
 <template>
@@ -36,7 +37,9 @@ onMounted(() => {
     </div>
   </header>
   <main>
-    <div v-if='noteStore.notes.length > 0' class="titles"><div class="title">Метки</div><div class="title">Тип записи</div><div class="title">Логин</div><div class="title">Пароль</div></div>
+    <div v-if="noteStore.notes.length > 0" class="titles">
+      <div v-for="title in titles" :key="title" class="title">{{ title }}</div>
+    </div>
     <VNote
       v-for="note in noteStore.notes"
       :note="note"
