@@ -6,7 +6,6 @@ import { onMounted } from 'vue'
 import { useNotesStore } from './stores/notes'
 
 const noteStore = useNotesStore()
-// const notes = noteStore.notes
 onMounted(() => {
   const storedNotes = localStorage.getItem('notes')
   if (storedNotes !== null) {
