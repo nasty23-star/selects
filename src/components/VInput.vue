@@ -7,7 +7,8 @@ const emit = defineEmits<{
 <template>
   <div :class="props.type !== 'password' ? 'field border input' : 'field sufix border input'">
     <input
-      :value="props.modelValue" :type="props.type"
+      :value="props.modelValue"
+      :type="props.type"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />
     <i v-if="props.type === 'password'">visibility</i>
