@@ -51,7 +51,6 @@ watch(password, () => {
 </script>
 <template>
   <div class="container">
-    {{ flag }}
     <VInput v-model="flag" type="flag" />
 
     <VInput v-model="login" />
@@ -71,7 +70,7 @@ watch(password, () => {
 .container {
   display: flex;
   align-items: flex-start;
+  margin-left: 40px;
   gap: 20px;
-  margin-top: 40px;
 }
 </style>

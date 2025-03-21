@@ -25,6 +25,6 @@ const options = ref(['Локальная', 'LDAP'])
 </template>
 <style scoped>
 .select {
-  max-width: 400px;
+  width: 214px;
 }
 </style>
