@@ -19,5 +19,6 @@ const emit = defineEmits<{
 <style scoped>
 .input {
   margin: 0;
+  width: 100%;
 }
 </style>
