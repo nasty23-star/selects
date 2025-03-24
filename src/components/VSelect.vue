@@ -22,7 +22,7 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 <style scoped>
 .select {
-  width: 214px;
+  width: 100%;
 }
 .field {
   margin: 0;

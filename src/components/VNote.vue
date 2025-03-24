@@ -74,16 +74,18 @@ const validatePassword = () => {
 </script>
 <template>
   <div class="container">
-    <VInput v-model.trim="flag" type="flag" />
+    <VInput v-model.trim="flag" type="flag" class="flag" />
     <VSelect
       :class="{ invalid: error }"
+      class="type"
       v-model="selected"
       :options="options"
       @blur="validateSelected"
     />
-    <VInput :class="{ invalid: error }" v-model.trim="login" @blur="validateLogin" />
+    <VInput :class="{ invalid: error }" class="login" v-model.trim="login" @blur="validateLogin" />
     <VInput
       v-if="props.note.password !== null"
+      class="password"
       :class="{ invalid: error }"
       v-model.trim="password"
       type="password"
@@ -105,5 +107,14 @@ const validatePassword = () => {
   margin-left: 40px;
   gap: 20px;
   margin-bottom: 20px;
+  max-width: 1140px;
+}
+.flag,
+.type,
+.password {
+  max-width: 248px;
+}
+.login {
+  width: 100%;
 }
 </style>

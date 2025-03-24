@@ -69,6 +69,6 @@ header {
   margin-bottom: 10px;
 }
 .title {
-  width: 214px;
+  width: 248px;
 }
 </style>
