@@ -2,6 +2,7 @@
 const props = defineProps(['modelValue', 'type'])
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
+  (e: 'blur'): void
 }>()
 </script>
 <template>
@@ -10,6 +11,7 @@ const emit = defineEmits<{
       :value="props.modelValue"
       :type="props.type"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+      @blur="emit('blur')"
     />
     <i v-if="props.type === 'password'">visibility</i>
   </div>

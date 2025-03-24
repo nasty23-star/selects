@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const props = defineProps(['modelValue'])
+const props = defineProps(['modelValue', 'options'])
 
 const emit = defineEmits(['update:modelValue'])
-
-const options = ref(['Локальная', 'LDAP'])
 </script>
 <template>
   <div class="select">
@@ -15,7 +12,7 @@ const options = ref(['Локальная', 'LDAP'])
           (e) => e.target && emit('update:modelValue', (e.target as HTMLSelectElement).value)
         "
       >
-        <option v-for="option in options" :key="option">
+        <option v-for="option in props.options" :key="option">
           {{ option }}
         </option>
       </select>

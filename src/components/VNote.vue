@@ -6,7 +6,8 @@ import VButton from './VButton.vue'
 import type { NoteInt } from '../types/common'
 const emit = defineEmits(['updateNote', 'deleteNote'])
 const props = defineProps<{ note: NoteInt }>()
-const selected = ref(props.note.type)
+const options = ref(['Локальная', 'LDAP'])
+const selected = ref('Локальная')
 const flag = ref(
   props.note.flag
     ?.map((x) => x.text)
@@ -45,18 +46,49 @@ watch(password, () => {
     password: password.value,
   })
 })
-// валидация и отображение если не так
+const error = ref(false)
+const validateSelected = () => {
+  if (!selected.value) {
+    error.value = true
+  } else {
+    error.value = false
+  }
+}
+const validateLogin = () => {
+  if (!login.value) {
+    error.value = true
+  } else {
+    error.value = false
+  }
+}
+const validatePassword = () => {
+  if (!password.value) {
+    error.value = true
+  } else {
+    error.value = false
+  }
+}
 
-// не забыть дописать названия колонок (метка  и тд)
+// если пароля нет, логин должен растянуться на всю длину
+// доделать сохранение в объект, а не в строку, в метке
 </script>
 <template>
   <div class="container">
-    <VInput v-model="flag" type="flag" />
-
-    <VInput v-model="login" />
-    <VSelect v-model="selected" />
-
-    <VInput v-if="props.note.password !== null" v-model="password" type="password" />
+    <VInput v-model.trim="flag" type="flag" />
+    <VSelect
+      :class="{ invalid: error }"
+      v-model="selected"
+      :options="options"
+      @blur="validateSelected"
+    />
+    <VInput :class="{ invalid: error }" v-model.trim="login" @blur="validateLogin" />
+    <VInput
+      v-if="props.note.password !== null"
+      :class="{ invalid: error }"
+      v-model.trim="password"
+      type="password"
+      @blur="validatePassword"
+    />
     <VButton
       @click="emit('deleteNote', note.id)"
       class="border square tertiary-border medium large tertiary-text medium-elevate top"
