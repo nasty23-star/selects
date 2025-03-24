@@ -8,12 +8,7 @@ const emit = defineEmits(['updateNote', 'deleteNote'])
 const props = defineProps<{ note: NoteInt }>()
 const options = ref(['Локальная', 'LDAP'])
 const selected = ref('Локальная')
-const flag = ref(
-  props.note.flag
-    ?.map((x) => x.text)
-    .join('')
-    .replace(':', ': ') ?? '',
-)
+const flag = ref(props.note.flag?.map((x) => x.text).join('; '))
 const login = ref(props.note.login)
 const password = ref(props.note.password)
 watch(selected, () => {
@@ -24,14 +19,18 @@ watch(selected, () => {
   })
 })
 watch(flag, () => {
-  if (flag.value !== undefined || flag.value) {
-    const newFlagObject = { text: flag.value }
+  if (flag.value !== undefined && flag.value.trim() !== '') {
+    const newFlagObject = flag.value
+    const flags = newFlagObject
+      .split(';')
+      .map((part) => ({ text: part.trim() }))
+      .filter((flag) => flag.text !== '')
     emit('updateNote', {
       ...props.note,
-      flag: [newFlagObject],
+      flag: flags,
     })
   } else {
-    console.error('flag.value is undefined')
+    console.error('flag.value is empty or undefined')
   }
 })
 watch(login, () => {
@@ -69,8 +68,6 @@ const validatePassword = () => {
   }
 }
 
-// если пароля нет, логин должен растянуться на всю длину
-// доделать сохранение в объект, а не в строку, в метке
 </script>
 <template>
   <div class="container">
